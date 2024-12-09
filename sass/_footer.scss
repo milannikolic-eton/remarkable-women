@@ -1,0 +1,118 @@
+.footer {
+    .footer-top {
+        background-color: $primary-color;
+        color: #fff;
+        font-size: 1.6rem;
+        padding: 7rem 0;
+
+
+        .wp-block-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3.2rem;
+            max-width: 45rem;
+
+            .wp-block-image {
+                max-width: 21rem;
+                margin: 0;
+                width: auto!important;
+            }
+
+            
+        }
+    }
+
+    .footer-bottom {
+        padding: 2rem 0 4rem;
+
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 3.2rem;
+
+            li {
+                a {
+                    text-decoration: none;
+                    color: $primary-color;
+                    font-weight: 500;
+                    font-size: 2rem;
+
+                    &:hover {
+                        color: $secondary-color;
+                    }
+                }
+
+            }
+
+            li.current-menu-item {
+                a {
+                    color: $secondary-color;
+                }
+            }
+
+        }
+    }
+}
+
+.wp-block-social-links {
+    display: flex;
+    gap: 2.3rem;
+
+    li {
+        background-color: transparent!important;
+        border-radius: 100%;
+        border: .2rem solid #fff;
+        overflow: hidden;
+
+        &:hover {
+            transform: scale(1); 
+            border-color: $cta-color!important;
+
+            a {
+            
+                svg path {
+                    fill: $cta-color;
+                }
+            }
+        }
+
+        a {
+            width: 4rem;
+            height: 4rem;
+            
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                height: auto!important;
+                width: 2rem!important;
+                path {
+                    fill: #fff;
+                }
+            }
+
+            .screen-reader-text {
+                display: none;
+            }
+        }
+    }
+}
+
+
+
+/** Responsive **/
+@media only screen and (max-width:767px) {
+    .footer-bottom {
+        ul {
+            flex-direction: column;
+            gap: 2rem!important;
+        }
+    }
+
+    .footer-top {
+        .wp-block-columns {
+            gap: 7rem!important;
+        }
+    }
+}

@@ -1,0 +1,147 @@
+.wp-block-cover {
+    position: relative;
+    padding: 10vh 0;
+
+    .wp-block-cover__inner-container {
+        max-width: $container;
+        margin: 0 auto!important;
+        width: 100%!important;
+        padding: 0 2rem;
+        color: #fff!important;
+    
+        p.has-medium-font-size {
+            font-weight: 500;
+        }
+    }
+}
+
+.gutenberg > .wp-block-cover:first-child {
+    padding-top: 15rem;
+    overflow: hidden;
+}
+.gutenberg > .wp-block-group:first-child {
+    padding-top: 21rem;
+}
+.gutenberg > .wp-block-cover:first-child::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    background: url(assets/images/swirl-1.svg) no-repeat;
+    background-size: cover;
+    background-position: center right;
+    width: 17vw;
+    height: 70vh;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.wp-block-quote.is-style-plain {
+    margin: 5rem 0;
+    padding-left: 5rem;
+
+    p {
+        font-weight: 900;
+        font-size: 3.6rem;
+    }
+
+    cite {
+        font-weight: 700;
+        font-style: normal;
+        font-size: 2rem;
+        max-width: 69rem;
+    }
+}
+
+.wp-block-quote:not(.is-style-plain) {
+    padding: 8rem 2rem 12rem;
+    position: relative;
+    overflow: hidden;
+    color: #fff;
+
+    p:first-child:before {
+        content: "";
+        position: relative;
+        display: block;
+        background: url(assets/images/quote.svg) no-repeat;
+        background-size: contain;
+        width: 8rem;
+        height: 6.4rem;
+        margin-bottom: 3.2rem;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: 5vw;
+        right: -15vw;
+        top: 0;
+        bottom: -40vh;
+        background: url(assets/images/background1.svg) no-repeat;
+        background-size: cover;
+        background-position: right bottom;
+        z-index: 1;
+    }
+
+    p {
+        font-weight: 900;
+        line-height: 1;
+        font-size: 5.4rem;
+        z-index: 2;
+        position: relative;
+        margin-bottom: 2rem;
+    }
+
+    cite {
+        font-size: 2.6rem;
+        font-style: normal;
+        font-weight: 700;
+        z-index: 2;
+        position: relative;
+    }
+
+    > * {
+        max-width: calc($container * 0.74);
+        margin: 0 auto;
+    }
+}
+
+.orange-quote {
+    &::after {
+        content: "";
+        position: absolute;
+        left: 0!important;
+        width: 80vw;
+        top: 0;
+        bottom: -10vh;
+        background: url(assets/images/swirl2.svg) no-repeat!important;
+        background-size: cover;
+        background-position: right bottom;
+        z-index: 1;
+    }
+}
+
+
+.wp-block-group {
+    position: relative;
+    padding: 8rem 0;
+
+    .wp-block-group__inner-container {
+        max-width: $container;
+        margin: 0 auto!important;
+        width: 100%!important;
+        padding: 0 2rem;
+    }
+}
+
+.wp-block-embed-youtube {
+    max-width: calc($container * 0.83);
+    color: #fff;
+    margin: 0 auto;
+    
+    iframe {
+        aspect-ratio: 16/9;
+        width: 100%;
+        height: auto;
+    }
+}

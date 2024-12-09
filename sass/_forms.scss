@@ -1,0 +1,122 @@
+.everest-forms {
+    margin: 5rem 0 0;
+    max-width: 86rem;
+
+    .evf-frontend-grid {
+        padding: 0!important;
+
+        input[type=text],
+        input[type=email] {
+            background-color: #231F20;
+            border: none;
+            font-family: inherit;
+            color: #fff;
+            min-height: 6.4rem;
+            font-size: 1.6rem;
+            padding: 1rem 2rem;
+        }
+
+        textarea {
+            background-color: #231F20;
+            border: none;
+            font-family: inherit;
+            color: #fff;
+            min-height: 6.4rem;
+            font-size: 1.6rem;
+            padding: 1rem 2rem;
+        }
+
+        input::placeholder {
+            color: #fff!important;
+        }
+        
+        input::-webkit-input-placeholder {
+            color: #fff!important;  /* Webkit browsers (Chrome, Safari) */
+        }
+        
+        input::-moz-placeholder {
+            color: #fff!important;  /* Firefox */
+        }
+        
+        input:-ms-input-placeholder {
+            color: #fff!important;  /* Internet Explorer 10+ */
+        }
+        
+        textarea::placeholder {
+            color: #fff!important;
+        }
+        
+        textarea::-webkit-input-placeholder {
+            color: #fff!important;
+        }
+        
+        textarea::-moz-placeholder {
+            color: #fff!important;
+        }
+        
+        textarea:-ms-input-placeholder {
+            color: #fff!important;
+        }
+
+    }
+
+    .evf-field-radio {
+        display: flex!important;
+        align-items: center;
+        gap: 2rem;
+        margin: 2rem 0 3rem!important;
+
+        * {
+            margin: 0!important;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+
+            li {
+                display: flex!important;
+                align-items: center;
+
+                label {
+                    white-space: nowrap;
+                    line-height: 1;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+
+    .evf-field-privacy-policy {
+        margin-bottom: 2rem!important;
+        display: flex!important;
+        gap: 1rem;
+
+        a {
+            color: $primary-color;
+        }
+    }
+
+    .evf-submit-container {
+        padding: 0!important;
+
+        button[type=submit] {
+            background-color: $secondary-color!important;
+            color: #fff;
+            border: none;
+            width: 100%;
+            text-transform: uppercase;
+            font-size: 1.8rem;
+            border-radius: 0;
+            font-weight: 900;
+            min-height: 6.4rem;
+
+            &:hover {
+                color: #fff!important;
+                opacity: .84;
+            }
+        }
+    }
+    
+}
