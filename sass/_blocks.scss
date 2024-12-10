@@ -532,3 +532,249 @@ body.single-stories {
         }
     }
 }
+
+
+
+.swiper-gallery {
+    width: 136.4rem;
+    overflow: hidden;
+    position: relative;
+
+
+    .swiper-button-prev::after, .swiper-button-next::after {
+        display: none;
+    }
+    .swiper-button-prev, .swiper-button-next {
+        background: url(assets/images/swipe-right.svg) no-repeat;
+        background-size: contain;
+        width: 5.2rem;
+        height: 5.2rem;
+    }
+    .swiper-button-prev {
+        transform: scaleX(-1);
+        right: auto;
+    }
+    .swiper-button-next {
+        left: auto;
+    }
+
+    .swiper-slide {
+        img {
+            width: 100%;
+            object-fit: cover;
+            height: auto;
+            aspect-ratio: 1364/810;
+        }
+    }
+}
+
+
+/** Responsive **/
+@media only screen and (max-width:1645px) {
+    .stories-filter-block #stories-list .story-item {
+        max-width: 50%;
+    }
+}
+@media only screen and (max-width:1415px) {
+    .swiper-gallery {
+        width: 100%!important;
+    }
+    .map-container .pin svg {
+        width: 2rem;
+    }
+}
+
+@media only screen and (max-width:1180px) {
+    .voice-posts .voice-post .excerpt {
+        font-size: 1.8rem;
+    }
+    .voice-posts .voice-post .voice-author {
+        font-size: 1.6rem!important;
+        font-weight: 500;
+    }
+    .stories-slider-block .stories-slider {
+        padding-left: 2rem!important;
+    }
+    .wp-block-quote:not(.is-style-plain):not(.orange-quote) {
+        padding: 5rem 2rem 6rem!important;
+
+        cite {
+            font-weight: 500;
+        }
+    }
+    .wp-block-quote:not(.is-style-plain):not(.orange-quote)::after {
+        left: 0;
+        bottom: 0;
+        background-position: center bottom;
+    }
+    body .stories-slider-block .story-title h3 {
+        font-size: 1.8rem;
+
+        b {
+            font-size: 3.4rem;
+        }
+    }
+    body .about-the-project {
+        br {
+            display: none;
+        }
+
+        &::before {
+            width: 30vw;
+            height: 40vh;
+        }
+    }
+    body .gutenberg>.wp-block-cover:first-child::before {
+        width: 27vw;
+        height: 60vh;
+    }
+    .gutenberg>.wp-block-cover:first-child {
+        min-height: 45vh!important;
+        padding-bottom: 2rem!important;
+
+        h1 {
+            margin-bottom: 1.2rem;
+        }
+
+        p.has-medium-font-size {
+            font-size: 1.5rem!important;
+
+            br {
+                display: none;
+            }
+        }
+    }
+    body .wp-block-quote {
+        overflow: hidden;
+    }
+    body .wp-block-quote.orange-quote:not(.is-style-plain)::after {
+        right: auto;
+        top: 55%;
+        bottom: 0!important;
+        left: 0!important;
+        width: 378vw;
+        background-position: top right!important;
+    }
+    body .wp-block-quote:not(.is-style-plain) p:first-child:before {
+        width: 4rem;
+        height: 3.2rem;
+    }
+    body .wp-block-quote:not(.is-style-plain) p {
+        font-size: 3.4rem!important;
+    }
+    body .wp-block-quote:not(.is-style-plain) cite {
+        font-size: 1.8rem;
+    }
+    body .wp-block-quote.is-style-plain p {
+        font-size: 1.8rem;
+        margin-bottom: .5rem;
+    }
+    body .wp-block-quote.is-style-plain cite {
+        font-size: 1.6rem;
+    }
+    body .story-hero h1 {
+        font-size: 1.8rem;
+
+        strong {
+            font-size: 4.2rem;
+        }
+    }
+    body .story-hero::after {
+        width: 35vw;
+        top: 12rem;
+        z-index: 1;
+        opacity: .7;
+    }
+    body .story-hero .wp-block-group__inner-container {
+        position: relative;
+        z-index: 2;
+    }
+    body .story-hero .wp-block-spacer {
+        display: none;
+    }
+    .stories-filter-block #stories-list .story-title h3 {
+        font-size: 1.8rem;
+    }
+    .stories-filter-block #stories-list .story-title b {
+        font-size: 3.4rem;
+    }
+    body .stories-intro::after {
+        top: 12rem!important;
+        width: 30vw!important;
+        opacity: .5;
+        z-index: 1;
+    }
+    .stories-intro {
+        .wp-block-group__inner-container {
+            z-index: 2;
+            position: relative;
+        }
+    }
+    .stories-filter-block #stories-filter {
+        top: -15rem!important;
+    }
+    .gutenberg>.wp-block-group:first-child {
+        padding-top: 11rem!important;
+    }
+
+    .heading-hero::after {
+        top: 12rem!important;
+        width: 30vw!important;
+    }
+
+    body {
+        .creative {
+            flex-wrap: nowrap!important;
+
+            .wp-block-column:last-child {
+                font-size: 1.8rem!important;
+            }
+        }
+    }
+}
+@media only screen and (max-width:767px) {
+    .voice-posts {
+        column-count: 1!important;
+
+        .voice-post {
+            padding: 2rem!important;
+        }
+    }
+    .map-container .pin svg {
+        width: 1rem;
+    }
+    .stories-filter-block #stories-list .story-item {
+        max-width: 100%;
+        border-top: 3px solid $primary-color;
+        border-right: 0!important;
+    }
+    body {
+        .creative {
+            .wp-block-column:first-child {
+                flex-basis: 10rem!important;
+                min-width: 10rem!important;
+            }
+            img {
+                width: 10rem!important;
+                height: 10rem!important;
+            }
+        }
+
+        .poem-block::after {
+            top: auto!important;
+            width: 100vw!important;
+            left: 0;
+            height: 18vh!important;
+            background-position: top center;
+            z-index: 0;
+            opacity: .5;
+        }
+
+        .poem-block {
+            .wp-block-group__inner-container {
+                z-index: 2;
+                position: relative;
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
     // Wait for the DOM to load
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
         const header = document.getElementById("header");
 
         // Set the offset position of the header
@@ -13,4 +13,11 @@
                 header.classList.remove("sticky-header");
             }
         };
-    });
+
+        document.getElementById('mob-menu-bar').addEventListener('click', function () {
+            this.classList.toggle('change');
+            document.querySelector('.header nav').classList.toggle('menu-open');
+            document.body.classList.toggle('menu-open');
+        });
+            
+}); //wait for DOM

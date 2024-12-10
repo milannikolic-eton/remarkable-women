@@ -115,4 +115,38 @@
             gap: 7rem!important;
         }
     }
+
+    body .footer .footer-top .footer-widget {
+        img {
+            max-width: 15.4rem;
+    
+        }
+
+        .wp-block-gallery {
+            gap: 1.5rem!important;
+
+            figure:nth-child(2) img {
+                max-width: 17.4rem!important;
+            }
+
+            img {
+                max-width: 11rem!important;
+            }
+        }
+
+        p {
+            font-size: 2rem!important;
+            margin-bottom: 1.2rem!important;
+        }
+
+        .wp-block-column:last-child {
+            p {
+                font-size: 1.6rem!important;
+            }
+        }
+    }
+
+    .footer .footer-bottom ul li a {
+        font-size: 1.6rem!important;
+    }
 }

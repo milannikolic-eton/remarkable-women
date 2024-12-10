@@ -53,3 +53,36 @@ a {
     color: $secondary-color;
     transition: all .23s ease;
 }
+
+
+
+/** Responsive **/
+@media only screen and (max-width:1180px) {
+    body {
+
+        h1 {
+            font-size: 4.2rem;
+        }
+
+        h2 {
+            font-size: 3.4rem;
+        }
+
+        h3 {
+            font-size: 2.4rem;
+        }
+
+        .has-large-font-size,
+        .has-medium-font-size {
+            font-size: 1.8rem!important;
+        }
+
+        .wp-block-group {
+            padding: 3rem 0;
+        }
+
+        p:not(:last-child) {
+            margin-bottom: 2.4rem;
+        }
+    }
+}

@@ -188,6 +188,7 @@ add_filter('render_block', 'change_cover_block_thumbnail', 10, 2);
 /*------------------------------------*\
     Enqueue scripts
 \*------------------------------------*/
+
 function theme_scripts()
 {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
@@ -201,16 +202,17 @@ function theme_scripts()
         wp_register_style('main-theme-css', get_template_directory_uri() . '/style.min.css', array(), '1.0', 'all');
         wp_enqueue_style('main-theme-css'); // Enqueue it!
 
-        if (isset($post->post_content) && has_shortcode($post->post_content, 'stories_slider')) {
+      //  if (isset($post->post_content) && has_shortcode($post->post_content, 'stories_slider')) {
             wp_register_script('swiper', get_template_directory_uri() . '/assets/js/swiper.min.js', '', '1.0.0');
             wp_enqueue_script('swiper');
 
             wp_register_style('swiper-css', get_template_directory_uri() . '/assets/css/swiper.min.css', array(), '1.0', 'all');
             wp_enqueue_style('swiper-css'); // Enqueue it!
 
-        }
+      //  }
 
-
+        // Custom JS for initializing Swiper
+        wp_enqueue_script('custom-swiper', get_template_directory_uri() . '/assets/js/custom-swiper.js', ['swiper'], '1.0', true);
 
         if (isset($post->post_content) && has_shortcode($post->post_content, 'stories_filter')) {
             wp_enqueue_script('stories-filter', get_template_directory_uri() . '/assets/js/stories-filter.js', ['jquery'], null, true);
@@ -1229,11 +1231,19 @@ function init_stories_slider_conditionally()
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
                     new Swiper('.stories-slider', {
-                        slidesPerView: 2.5,
+                        slidesPerView: 1.2,
                         spaceBetween: 5,
                         navigation: {
                             nextEl: '.swiper-button-next',
                             prevEl: '.swiper-button-prev',
+                        },
+                        breakpoints: {
+
+                        840: {
+                            slidesPerView: 2.5,
+                            spaceBetween: 5,
+                        },
+   
                         },
                         loop: false,
                     });
@@ -1338,7 +1348,7 @@ add_action('everest_forms_process_complete', 'ef_create_voice_post', 10, 4);
 
 function ef_create_voice_post($form_fields, $entry, $form_data, $entry_id) {
     // Only run this for form ID 42.
-    if (isset($form_data['id']) && $form_data['id'] == 42) {
+    if (isset($form_data['id']) && $form_data['id'] == 191) {
         // Debug the form fields to find the correct ID for the Subject field.
       //  error_log('Form Fields: ' . print_r($form_fields, true));
         
@@ -1473,3 +1483,52 @@ function voice_posts_shortcode($atts) {
     return ob_get_clean();
 }
 add_shortcode('voice_posts', 'voice_posts_shortcode');
+
+
+/**
+ * Summary of customize_gallery_markup
+ * Gutenberg gallery with 1 column turn into swiper slider
+ */
+function customize_gallery_markup($block_content, $block) {
+    // Check if the block is a gallery block
+    if ('core/gallery' === $block['blockName']) {
+        // Get gallery attributes
+        $attributes = isset($block['attrs']) ? $block['attrs'] : [];
+
+        // Check if the 'columns' attribute exists and is set to 1
+        if (isset($attributes['columns']) && (int) $attributes['columns'] === 1) {
+            // Transform gallery output into Swiper-compatible structure
+
+            // Wrap each image in a Swiper slide
+            $block_content = preg_replace(
+                '/<figure class="wp-block-image(.*?)">/',
+                '<div class="swiper-slide"><figure class="wp-block-image$1">',
+                $block_content
+            );
+
+            // Close the swiper-slide div after each figure
+            $block_content = str_replace('</figure>', '</figure></div>', $block_content);
+
+            // Remove the gallery wrapper <figure>
+            $block_content = preg_replace(
+                '/<figure class="wp-block-gallery(.*?)">|<\/figure>/',
+                '',
+                $block_content
+            );
+
+            // Wrap the resulting slides in Swiper structure and add navigation arrows
+            $block_content = '
+                <figure class="swiper-gallery">
+                    <div class="swiper-wrapper">' . $block_content . '<div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div></div>
+                    
+                </figure>';
+        }
+    }
+
+    return $block_content;
+}
+add_filter('render_block', 'customize_gallery_markup', 10, 2);
+
+
+
