@@ -35,7 +35,7 @@
 .stories-intro {
     background-color: $pastel-green;
     position: relative;
-    padding-bottom: 17rem!important;
+   /* padding-bottom: 17rem!important;*/
 
     &::after {
         content: "";
@@ -76,6 +76,35 @@
     }
 }
 
+.all-stories {
+    b {
+        display: block;
+        margin-bottom: .5rem;
+    }
+    select {
+        min-height: 5.6rem;
+        background-color: $primary-color;
+        background-image: url(assets/images/down-arrow.svg);
+        background-repeat: no-repeat;
+        background-size: 15px;
+        background-position: 95% center;
+        color: #fff;
+        appearance: none; /* Remove default styling */
+        -webkit-appearance: none; /* For Safari */
+        -moz-appearance: none; /* For Firefox */
+        border-radius: 0; /* Rounded corners */
+        outline: none; /* Remove default focus outline */
+        cursor: pointer; /* Pointer cursor for dropdown */
+        transition: all 0.3s ease; /* Smooth transition */
+        min-width: 25rem;
+        padding: 1rem 2rem;
+        font-size: 1.8rem;
+    }
+
+    select:focus {
+        border-color: none; /* White border on focus */
+      }
+}
 
 .stories-filter-block {
     .wp-block-group__inner-container {
@@ -86,6 +115,7 @@
         position: absolute;
         left: 2rem;
         top: -20rem;
+        display: none!important;
 
         select {
             min-height: 5.6rem;
@@ -124,8 +154,12 @@
             background-color: #fff;
 
             &:hover {
-                img {
-                    transform: scale(1.05);
+                .story-thumbnail::before {
+                    opacity: .5;
+                }
+    
+                .story-title h3 {
+                    transform: translateX(10px);
                 }
             }
         }
@@ -136,6 +170,19 @@
 
         .story-thumbnail {
             overflow: hidden;
+            position: relative;
+
+            &::before {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                top: 0;
+                background-color: $pastel-green;
+                transition: all .23s ease;
+                opacity: 0;
+            }
 
             img {
                 object-fit: cover;
@@ -151,6 +198,7 @@
             h3 {
                 font-size: 3.6rem;
                 font-weight: 900;
+                transition: all .23s ease;
             }
 
             b {
@@ -216,14 +264,31 @@
         background-color: #fff;
 
         &:hover {
-            img {
-                transform: scale(1.05);
+            .story-thumbnail::before {
+                opacity: .5;
+            }
+
+            .story-title h3 {
+                transform: translateX(10px);
             }
         }
     }
 
     .story-thumbnail {
         overflow: hidden;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            top: 0;
+            background-color: $pastel-green;
+            transition: all .23s ease;
+            opacity: 0;
+        }
 
         img {
             object-fit: cover;
@@ -237,9 +302,11 @@
         padding: 3.2rem;
         background-color: #fff;
         
+        
         h3 {
             font-size: 3.6rem;
             font-weight: 900;
+            transition: all .23s ease;
         }
 
         b {
@@ -446,6 +513,11 @@ body.single-stories {
                 font-weight: 600;
             }
 
+            .pin-excerpt {
+                padding: 0 1rem 1rem;
+                font-size: 1.4rem;
+            }
+
             .pin-url {
                 margin: 0 1rem 1rem 1rem;
                 display: inline-block;
@@ -574,6 +646,13 @@ body.single-stories {
     .stories-filter-block #stories-list .story-item {
         max-width: 50%;
     }
+    .stories-slider-block .swiper-button-next {
+        right: 2rem!important;
+    }
+
+    .stories-slider-block .swiper-button-prev {
+        right: 10rem!important;
+    }
 }
 @media only screen and (max-width:1415px) {
     .swiper-gallery {
@@ -585,6 +664,11 @@ body.single-stories {
 }
 
 @media only screen and (max-width:1180px) {
+    .stories-slider-block .wp-block-columns .wp-block-column p a {
+        text-decoration: underline!important;
+        font-size: 1.6rem!important;
+    }
+    
     .voice-posts .voice-post .excerpt {
         font-size: 1.8rem;
     }
@@ -733,6 +817,29 @@ body.single-stories {
     }
 }
 @media only screen and (max-width:767px) {
+    .stories-slider-block  {
+        position: relative;
+
+        p.has-medium-font-size {
+            font-size: 1.5rem!important;
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            width: 3.8rem;
+            height: 3.8rem;
+        }
+
+        .swiper-button-prev {
+            right: 7rem!important;
+        }
+
+        .wp-block-column:last-child {
+            position: absolute;
+            left: 2rem;
+            bottom: 7.5rem;
+        }
+    }
     .voice-posts {
         column-count: 1!important;
 

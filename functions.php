@@ -1026,6 +1026,49 @@ add_action('wp_ajax_nopriv_load_video_swiper', 'load_video_swiper_ajax');
 
 /**
  * /
+ * Shortcode [stories_dropdown] 
+ */
+function cpt_stories_dropdown_shortcode() {
+    // Query all published stories
+    $stories = get_posts([
+        'post_type' => 'stories',
+        'post_status' => 'publish',
+        'numberposts' => -1,
+    ]);
+
+    // Start the dropdown HTML
+    $output = '<div class="all-stories"><b>SELECT COUNTRY</b><select id="stories-dropdown" onchange="redirectToStory(this)">';
+    $output .= '<option value="">Select a Story</option>';
+
+    // Populate the dropdown with story options
+    foreach ($stories as $story) {
+        $output .= sprintf(
+            '<option value="%s">%s</option>',
+            esc_url(get_permalink($story->ID)),
+            esc_html($story->post_title)
+        );
+    }
+
+    $output .= '</select></div>';
+
+    // Add JavaScript for redirection
+    $output .= '<script>
+        function redirectToStory(select) {
+            const url = select.value;
+            if (url) {
+                window.location.href = url;
+            }
+        }
+    </script>';
+
+    return $output;
+}
+
+// Register the shortcode
+add_shortcode('stories_dropdown', 'cpt_stories_dropdown_shortcode');
+
+/**
+ * /
  * Shortcode [stories_filter] 
  */
 function display_stories_filter()
@@ -1280,7 +1323,11 @@ function render_world_map_with_pins() {
             $location_name = getLastWord(get_the_title());
             $latitude = get_post_meta(get_the_ID(), 'latitude', true); // Latitude field
             $longitude = get_post_meta(get_the_ID(), 'longitude', true); // Longitude field
-            $excerpt = get_the_excerpt(); // Story excerpt
+            if (has_excerpt()) {
+                $excerpt = get_the_excerpt(); // Story excerpt
+            } else {
+                $excerpt ='';
+            }
             $featured_image = get_the_post_thumbnail_url(get_the_ID(), 'medium'); // Story featured image
             $story_url = get_permalink(); // Story link
 
@@ -1319,8 +1366,13 @@ function render_world_map_with_pins() {
                 <?php if ($pin['image']): ?>
                     <img src="<?php echo esc_url($pin['image']); ?>" alt="<?php echo esc_attr($pin['name']); ?>" class="pin-image">
                     <?php endif; ?>
-                    <div href="<?php echo esc_url($pin['url']); ?>" class="pin-title">
+
+                    <div class="pin-title">
                         <?php echo esc_html($pin['name']); ?>
+                    </div>
+
+                    <div class="pin-excerpt">
+                        <?php echo esc_html($pin['excerpt']); ?>
                     </div>
  
                     <a href="<?php echo esc_url($pin['url']); ?>" class="pin-url">VISIT PAGE</a>
