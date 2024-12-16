@@ -104,6 +104,23 @@
     select:focus {
         border-color: none; /* White border on focus */
       }
+
+    .custom-dropdown {
+        margin: 0;
+
+        .dropdown-selected {
+            background-image: url(assets/images/down-arrow.svg);
+            background-repeat: no-repeat;
+            background-size: 15px;
+            background-position: 95% center;
+            color: #fff;
+            background-color: $primary-color;
+        }
+    }
+}
+
+.custom-dropdown .dropdown-item:first-child {
+    display: none!important;
 }
 
 .stories-filter-block {
@@ -229,7 +246,7 @@
             flex: 1 1 auto;
 
             p a {
-                font-size: 2.6rem;
+                font-size: 2rem;
                 font-weight: 900;
                 text-decoration: none;
                 margin-top: 2rem;
@@ -492,6 +509,7 @@ body.single-stories {
                 opacity: 1;
                 transform: translateX(-50%) translateY(0);
                 visibility: visible;
+                z-index: 2020;
             }
         }
 
@@ -570,12 +588,12 @@ body.single-stories {
         }
 
         .excerpt {
-            font-size: 2.6rem;
+            font-size: 2.2rem;
             font-weight: 900;
         }
 
         .voice-author {
-            font-size: 2.6rem;
+            font-size: 2.2rem;
             font-weight: 700;
         }
     }
@@ -590,7 +608,7 @@ body.single-stories {
         color: #fff;
         border: none;
         font-weight: 900;
-        font-size: 2rem;
+        font-size: 1.8rem;
         text-transform: uppercase;
         min-height: 6.4rem;
         min-width: 22.4rem;
@@ -664,6 +682,9 @@ body.single-stories {
 }
 
 @media only screen and (max-width:1180px) {
+    .gutenberg > .wp-block-cover:first-child p.has-small-font-size {
+        bottom: 0!important;
+    }
     .stories-slider-block .wp-block-columns .wp-block-column p a {
         text-decoration: underline!important;
         font-size: 1.6rem!important;
@@ -817,6 +838,14 @@ body.single-stories {
     }
 }
 @media only screen and (max-width:767px) {
+    .map-container {
+        z-index: 2015;
+    }
+    .gutenberg > .wp-block-cover:first-child p.has-small-font-size {
+        position: relative!important;
+        margin-top: 2rem;
+        font-size: 1.2rem!important;
+    }
     .stories-slider-block  {
         position: relative;
 
@@ -838,6 +867,7 @@ body.single-stories {
             position: absolute;
             left: 2rem;
             bottom: 7.5rem;
+            z-index: 2015;
         }
     }
     .voice-posts {

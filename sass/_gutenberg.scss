@@ -18,6 +18,16 @@
 .gutenberg > .wp-block-cover:first-child {
     padding-top: 15rem;
     overflow: hidden;
+
+    .wp-block-cover__inner-container {
+        position: relative;
+    }
+
+    p.has-small-font-size {
+        position: absolute;
+        right: 0;
+        bottom: -4rem;
+    }
 }
 .gutenberg > .wp-block-group:first-child {
     padding-top: 21rem;
@@ -143,5 +153,15 @@
         aspect-ratio: 16/9;
         width: 100%;
         height: auto;
+    }
+}
+
+.gutenberg {
+    ul.wp-block-list {
+        padding-left: 2rem;
+        margin-bottom: 2.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
     }
 }

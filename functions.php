@@ -1448,7 +1448,7 @@ function load_more_voice_posts() {
 
     $query = new WP_Query([
         'post_type' => 'voice',
-        'posts_per_page' => 2,
+        'posts_per_page' => 8,
         'post_status'    => array( 'publish' ),
         'paged' => $paged,
     ]);

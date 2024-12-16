@@ -1,7 +1,7 @@
 .header {
     background-color: $primary-color;
     color: #fff;
-    padding: 4rem 0;
+    padding: 2rem 0;
     position: fixed;
     z-index: 2015;
     left: 0;
@@ -22,6 +22,7 @@
             align-items: flex-start;
 
             li.current-menu-item > a,
+            .current-menu-ancestor > a,
             li > a:hover {
                 color: $cta-color;
             }
@@ -30,6 +31,8 @@
                 list-style: none;
                 display: flex;
                 gap: 4rem;
+                position: relative;
+                top: 1rem;
 
                 li {
                     position: relative;
@@ -39,7 +42,8 @@
                         text-decoration: none;
                         text-transform: uppercase;
                         padding: 0.5rem 0;
-                        font-size: 2.4rem;
+                        /*font-size: 2.4rem;*/
+                        font-size: 1.7rem;
                         font-weight: 900;
                     }
 
@@ -52,6 +56,7 @@
                             opacity: 1;
                             transform: translateY(0);
                             z-index: 2;
+                            visibility: visible;
                         }
                     }
                 }
@@ -70,10 +75,11 @@
                     opacity: 0;
                     transform: translateY(-1rem);
                     z-index: -1;
+                    visibility: hidden;
 
                     li {
                         a {
-                            font-size: 2rem;
+                            font-size: 1.5rem;
                             white-space: nowrap;
                         }
                     }
@@ -117,7 +123,8 @@
 
 
 .home {
-    .header {
+    .header:not(.sticky-header) {
+        background: linear-gradient(180deg, rgba(19, 20, 24, 1) 0%, rgba(19, 20, 24, 0) 84%);
         background-color: transparent;
 
         .logo {
@@ -138,6 +145,9 @@
     }
 }
 @media only screen and (max-width:1180px) {
+    .on-mob-hide {
+        display: none!important;
+    }
     .header {
         padding: 1rem 0!important;
 
@@ -236,6 +246,7 @@
                 padding: 1.6rem 1.6rem 0!important;
                 transform: translateY(0)!important;
                 background-color: transparent!important;
+                visibility: visible!important;
 
                 &::before {
                     display: none!important;
@@ -245,8 +256,14 @@
             .gt_selector {
                 margin: 7rem 0 0!important;
             }
+
+            .custom-dropdown {
+                margin: 7rem 0 0!important;
+            }
         }
     }
+
+
 }
 
 body.menu-open {

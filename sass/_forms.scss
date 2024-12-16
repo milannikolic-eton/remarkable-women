@@ -65,6 +65,7 @@
         align-items: center;
         gap: 2rem;
         margin: 2rem 0 3rem!important;
+        flex-wrap: wrap;
 
         * {
             margin: 0!important;
@@ -93,10 +94,16 @@
         display: flex!important;
         gap: 1rem;
 
+        label.evf-error {
+            display: none!important;
+        }
+        
+
         a {
             color: $primary-color;
         }
     }
+
 
     .evf-submit-container {
         padding: 0!important;
