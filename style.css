@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 	Theme Name: Remarkable woman custom theme
 	Description: Custom WordPress Theme
@@ -435,8 +436,8 @@ body.menu-open {
 }
 
 .footer .footer-top {
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   font-size: 1.6rem;
   padding: 7rem 0;
 }
@@ -479,7 +480,7 @@ body.menu-open {
 .wp-block-social-links li {
   background-color: transparent !important;
   border-radius: 100%;
-  border: 0.2rem solid #fff;
+  border: 0.2rem solid #000;
   overflow: hidden;
 }
 .wp-block-social-links li:hover {
@@ -501,7 +502,7 @@ body.menu-open {
   width: 2rem !important;
 }
 .wp-block-social-links li a svg path {
-  fill: #fff;
+  fill: #000;
 }
 .wp-block-social-links li a .screen-reader-text {
   display: none;
@@ -1152,11 +1153,19 @@ body.single-stories .wp-block-column p, body.single-stories .wp-block-column blo
     font-size: 3.4rem;
   }
   body .about-the-project br {
-    display: none;
+    content: "";
+  }
+  body .about-the-project br:after {
+    content: " ";
   }
   body .about-the-project::before {
     width: 30vw;
     height: 40vh;
+    z-index: 1;
+  }
+  body .about-the-project .wp-block-group__inner-container {
+    z-index: 2;
+    position: relative;
   }
   body .gutenberg > .wp-block-cover:first-child::before {
     width: 27vw;

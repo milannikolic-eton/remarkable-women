@@ -720,13 +720,18 @@ body.single-stories {
         }
     }
     body .about-the-project {
-        br {
-            display: none;
-        }
+
+        br {content: ""}
+        br:after {content: "\00a0"}
 
         &::before {
             width: 30vw;
             height: 40vh;
+            z-index: 1;
+        }
+        .wp-block-group__inner-container {
+            z-index: 2;
+            position: relative;
         }
     }
     body .gutenberg>.wp-block-cover:first-child::before {

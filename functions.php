@@ -1448,7 +1448,7 @@ function load_more_voice_posts() {
 
     $query = new WP_Query([
         'post_type' => 'voice',
-        'posts_per_page' => 8,
+        'posts_per_page' => 2,
         'post_status'    => array( 'publish' ),
         'paged' => $paged,
     ]);
@@ -1572,7 +1572,7 @@ function customize_gallery_markup($block_content, $block) {
             $block_content = '
                 <figure class="swiper-gallery">
                     <div class="swiper-wrapper">' . $block_content . '<div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div></div>
+                    <div class="swiper-button-next"></div>
                     
                 </figure>';
         }
